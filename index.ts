@@ -218,3 +218,166 @@ console.log(colors)
 
 
 //-----------------------------------------------------------TUPLES
+
+const game:[string,number,boolean]=["abbas",56,false]
+
+console.log(game)
+
+//------------------------------------------------------------ENUMS
+
+enum weeks {
+    sunday,
+    monday,
+    tuesday,
+    wednesday,
+    thrusday,
+    friday,
+}
+
+const currentWeek = weeks.friday
+console.log(currentWeek)
+
+// CLASS PROPERTIES ANNOTATIONs
+
+class broType{
+    name:string;
+    age:number;
+
+    constructor(name:string,age:number){
+        this.name=name;
+        this.age=age
+    }
+
+}
+
+const bro1type = new broType("ajay",23)
+
+console.log(bro1type)
+
+// access Modifiers
+
+class Girl {
+    public firstName:string;
+    private lastName:string;
+    protected age : number
+    constructor(firstName:string,lastName:string,age:number){
+        this.firstName=firstName;
+        this.lastName=lastName
+        this.age=age
+    }
+
+    getName():string{
+        return `${this.firstName} ,${this.lastName}`
+    }
+}
+
+const meena = new Girl("meena kumari","kandasamy",90)
+
+console.log(meena.firstName)
+console.log(meena.getName())
+// console.log(meena.lastName) , give an error  
+
+class Adult  extends Girl{
+    constructor(firstName:string,lastName:string,age:number){
+        super(firstName,lastName,age)
+        
+    }
+
+    getName(): string {
+        return `${this.firstName}  ${this.age}`
+    }
+}
+
+const a1 = new Adult("arumugam","pandian",20)
+
+console.log(a1.getName())
+
+// get set er
+
+class demoClass {
+    private _proprety :number=0;
+
+    get proprety():number{
+        return this._proprety
+    }
+    set proprety(value:number){
+        this._proprety=value
+    }
+}
+
+const testClass = new demoClass()
+
+testClass.proprety=90
+
+console.log(testClass.proprety)
+
+// INTERFACE
+
+interface computer{
+    name:string;
+    ram:number;
+    hdd:number;
+}
+
+const computerExample : computer ={
+    name:"hp-7",
+    ram:8,
+    hdd:599,
+}
+
+console.log(computerExample)
+
+interface Movie {
+    readonly name:string;
+    ratings:number;
+    gener?:string;
+}
+
+const movie1: Movie ={
+    name:"captain america",
+    ratings:5.6,
+    gener:"action"
+}
+
+const movie2: Movie ={
+    name:"Tokyo Night",
+    ratings:5.6,
+}
+
+// movie2.name="op" ,give an error 
+// interface function
+interface mathOperation{
+    (x:number,y:number):number;
+}
+
+const add:mathOperation =(a,b)=>a+b;
+const sub:mathOperation =(a,b)=>a-b;
+
+console.log(add(9,3))
+console.log(sub(9,4))
+
+// interface object
+
+// declaratin merging
+
+//------------------------------------GENERICS
+
+
+// regular func
+
+function printInfo<T>(x:T):T{
+    return x;
+}
+
+const str = printInfo<string>("name: ")
+const num = printInfo<number>(90)
+const booll = printInfo<boolean>(false)
+
+console.log(str,num,booll)
+
+// 2:31
+
+
+
+
+ 
