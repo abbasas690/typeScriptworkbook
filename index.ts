@@ -154,6 +154,10 @@ function printUser():{fistName:string;lastName:string}{
 
 // ---------------------------------------------------Type Aliases
 
+
+
+
+
 type box ={
     x:number
     y:number
@@ -219,6 +223,10 @@ console.log(colors)
 
 //-----------------------------------------------------------TUPLES
 
+
+
+
+
 const game:[string,number,boolean]=["abbas",56,false]
 
 console.log(game)
@@ -268,6 +276,8 @@ class Girl {
 
     getName():string{
         return `${this.firstName} ,${this.lastName}`
+
+        
     }
 }
 
@@ -350,15 +360,102 @@ interface mathOperation{
     (x:number,y:number):number;
 }
 
-const add:mathOperation =(a,b)=>a+b;
-const sub:mathOperation =(a,b)=>a-b;
+const add:mathOperation = (a,b)=> a+b;
+const sub:mathOperation = (a,b)=> a-b;
 
 console.log(add(9,3))
 console.log(sub(9,4))
 
 // interface object
+interface Song {
+    name:string;
+    gener:string;
+    rate:number;
+    play():void;
+    stop():void;
+}
 
+const song : Song ={
+    name:"badass",
+    gener:"tamil song",
+    rate:4.2,
+    comments:"nothing to say",
+    play(){
+        console.log("The song is playing")
+    },
+    stop() {
+        console.log("The song stop")
+    },
+}
+
+console.log(song)
 // declaratin merging
+
+interface Song {
+    comments:string;
+}
+
+const song1 : Song = {
+    name:"dippam dappam",
+    gener:"tamil song",
+    rate:4.5,
+    comments:"good to go",
+    play(){
+        console.log(`The song ${this.name} is playing...`)
+    },
+    stop() {
+
+      console.log(`The song ${this.name} is stopped playing...`)  
+    },
+}
+
+console.log(song1)
+song1.play()
+song1.stop()
+
+// interface inheritance
+
+interface MovieDetails{
+    readonly name:string;
+    rateings:number;
+    printMovieInfo(name:string,price:number,ratings:number):string | number;
+}
+
+interface MovieGenra extends MovieDetails {
+    genra:string;
+}
+
+const movie23 : MovieGenra ={
+    name:"star wars",
+    genra:"Action",
+    rateings:8.9,
+    printMovieInfo(name:string,price:number,ratings:number):string | number {
+        return `Movie Name: ${name} Price:${price} Ratings:${ratings}`
+    }
+}
+
+console.log( movie23.printMovieInfo("jhon wick",200,8.7))
+
+// interface class 
+
+interface Vechical {
+    start():void
+    stop():void
+}
+
+class Car implements Vechical{
+    start(): void {
+        console.log('car is starting....')
+    }
+    stop(): void {
+        console.log('car is stopping.')
+    }
+}
+
+const newCar = new Car()
+newCar.start()
+newCar.stop()
+
 
 //------------------------------------GENERICS
 
@@ -366,6 +463,7 @@ console.log(sub(9,4))
 // regular func
 
 function printInfo<T>(x:T):T{
+    
     return x;
 }
 
@@ -375,9 +473,5 @@ const booll = printInfo<boolean>(false)
 
 console.log(str,num,booll)
 
-// 2:31
 
 
-
-
- 
